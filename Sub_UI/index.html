@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html><head>
+<title>HTML KickStart</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="" />
+<script type="text/javascript" src="js/jquery.1.8.3.min.js">
+</script>
+<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+<script type="text/javascript" src="js/prettify.js"></script>                                   <!-- PRETTIFY -->
+<script type="text/javascript" src="js/kickstart.js"></script>                                  <!-- KICKSTART -->
+
+<script type="text/javascript" src="js/mousehold.js"></script> 
+
+<link rel="stylesheet" type="text/css" href="css/kickstart.css" media="all" />                  <!-- KICKSTART -->
+<link rel="stylesheet" type="text/css" href="style.css" media="all" />                          <!-- CUSTOM STYLES -->
+</head><body>
+
+<div class="grid">
+	<div id="wrap" class="clearfix">
+<html>
+<body>
+
+<SCRIPT TYPE="text/javascript">
+$(document).ready(function(){
+
+$("#PTZup").mousehold(300,function(i){
+$.get("http://192.168.1.2/decoder_control.cgi?command=0&onestep=5");
+}),
+
+$("#PTZdown").mousehold(300,function(i){
+$.get("http://192.168.1.2/decoder_control.cgi?command=2&onestep=5");
+});
+ 
+$("#PTZleft").mousehold(300,function(i){
+$.get("http://192.168.1.2/decoder_control.cgi?command=4&onestep=5");
+});
+
+$("#PTZright").mousehold(300,function(i){
+$.get("http://192.168.1.2/decoder_control.cgi?command=6&onestep=5");
+});
+
+$("#IR_Off").click(function(){
+$.get("http://192.168.1.2/decoder_control.cgi?command=94");
+});
+
+$("#IR_On").click(function(){
+$.get("http://192.168.1.2/decoder_control.cgi?command=95");
+});
+
+});
+</SCRIPT>
+
+	
+	<div class="col_12">
+	<h1 class="center">
+	<!--<span class="icon" style="font-size:400px;text-shadow: 0px 3px 2px rgba(0,0,0,0.3);color:#efefef;" data-icon="F"></span><br /> -->
+	<h4>Sub UI</h3>
+		<table>
+		<tr>
+		<td class="center" width="640" height="480">
+		<iframe width="640" height="480" src="http://192.168.1.2/videostream.cgi?user=admin&pwd=0bs0l33t"></iframe>
+		</td>
+		<td>
+		  <p>PTZ Controls</P>
+		  	<p>
+		  <input type="button" id="PTZup" value="&#8593;" name="up">  
+          <input type="button" id="PTZdown" value="&#8595;" name="down"> 
+          <input type="button" id="PTZleft" value="&#8592;" name="left"> 
+          <input type="button" id="PTZright"value="&#8594;" name="right"> 
+          <input type="button" id="IR_Off" value="IR Off" name="IR_Off"> 
+          <input type="button" id="IR_On"value="IR On" name="IR_On">
+          </p> 
+          	<p>Motor Controls</P>
+          	<p>
+          <input type="button" id="MOTORup" value="&#8593;" name="up">  
+          <input type="button" id="MOTORdown" value="&#8595;" name="down"> 
+          <input type="button" id="MOTORleft" value="&#8592;" name="left"> 
+          <input type="button" id="MOTORright"value="&#8594;" name="right"> 
+          <input type="button" id="MOTORhalt" value="HALT" name="MOTORhalt">  
+          <input type="button" id="MOTORstop" value="STOP" name="MOTORstop"> 
+          <input type="button" id="MOTORturbo" value="TURBO" name="MOTORturbo"> 
+          
+          <p>Speeds</p>
+          <input type="button" id="SPEED0" value="0" name="SPEED0">  
+          <input type="button" id="SPEED1" value="1" name="SPEED1"> 
+          <input type="button" id="SPEED2" value="2" name="SPEED2"> 
+          <input type="button" id="SPEED3"value="3" name="SPEED3"> 
+         </td>
+        
+		</tr>
+		</table>
+	</h1>
+	<h3 style="color:#ccc;margin-bottom:40px;" class="center">
+           
+	</h3>
+	</div>
+
+<!-- ===================================== START FOOTER ===================================== -->
+	</div><!-- END WRAP -->
+</div><!-- END GRID-->
+
+</body></html>

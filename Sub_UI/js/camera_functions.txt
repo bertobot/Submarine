@@ -1,0 +1,281 @@
+function preload()
+
+{
+
+img.src= 'http://'+IPandPort+'/'+imageType+'.jpg?'+(new Date()).getTime();
+
+}
+
+function changesrc()
+
+{
+
+img1.src=img.src;
+
+preload();
+
+setTimeout(changesrc,MyFPS);
+
+}
+
+function update()
+
+{
+
+imgObj = document.getElementById('img1');
+
+imgObj.src = img.src;
+
+img.src = 'http://'+IPandPort+'/'+imageType+'.jpg?'+(new Date()).getTime();
+
+if (originalWidth == 0)
+
+{
+
+originalWidth = img1.clientWidth;
+
+originalHeight = img1.clientHeight;
+
+}
+
+if (firstTime)
+
+{
+
+document.getElementById('testing123').style.display = 'block';
+
+document.getElementById('testing123').style.visibility = 'visible';
+
+firstTime = false;
+
+}
+
+if (DisplayStatsEvery != "")
+
+{
+
+if (isIE)
+
+totalKBps = totalKBps + parseFloat(document.getElementById("img1").fileSize);
+
+countFPS++;
+
+}
+
+}
+
+function load_video()
+
+{
+
+window.status=" ";
+
+setTimeout("update()", MyFPS);
+
+}
+
+function takeError1()
+
+{
+
+img1.src = 'http://'+IPandPort+'/'+imageType+'.jpg?'+(new Date()).getTime();
+
+}
+
+function takeError()
+
+{
+
+img.src = 'http://'+IPandPort+'/'+imageType+'.jpg?'+(new Date()).getTime();
+
+}
+
+function startonload()
+
+{
+
+img.src = 'http://'+IPandPort+'/'+imageType+'.jpg?'+(new Date()).getTime();
+
+img.onerror=takeError;
+
+img1.onerror=takeError1;
+
+img.onload=load_video;
+
+}
+
+function load()
+
+{
+
+if (useSnapshot != "")
+
+imageType = "tmpfs/snap";
+
+else
+
+imageType = "tmpfs/auto";
+
+if ((typeof devid !== "undefined") && (DisplayCameraName != ""))
+
+$("#CameraName").text(devid);
+
+if (ShoWPTZControls != "")
+
+{
+
+document.getElementById('PTZ1').style.display = 'block';
+
+document.getElementById('PTZ1').style.visibility = 'visible';
+
+document.getElementById('PTZ2').style.display = 'block';
+
+document.getElementById('PTZ2').style.visibility = 'visible';
+
+}
+
+if (ShoWFPS != "")
+
+{
+
+document.getElementById('IntFPS').options[0].value = MyFPS;
+
+$('#IntFPS').val(MyFPS);
+
+document.getElementById('InternalFPS').style.display = 'block';
+
+document.getElementById('InternalFPS').style.visibility = 'visible';
+
+}
+
+if (navigator.appName.indexOf("Microsoft IE Mobile") != -1)
+
+{
+
+preload();
+
+changesrc();
+
+return;
+
+}
+
+startonload();
+
+if (DisplayStatsEvery != "")
+
+{
+
+startTime = new Date();
+
+countFPS = 0;
+
+totalKBps = 0;
+
+setInterval("reload_count()", (DisplayStatsEvery * 1000));
+
+}
+
+}
+
+function ptzUpSubmit()
+
+{
+
+var getTheForm = document.getElementById('sendptz');
+
+getTheForm.action= 'http://'+IPandPort+'/cgi-bin/hi3510/ytup.cgi';
+
+getTheForm.submit();
+
+}
+
+function ptzDownSubmit()
+
+{
+
+var getTheForm = document.getElementById('sendptz');
+
+getTheForm.action= 'http://'+IPandPort+'/cgi-bin/hi3510/ytdown.cgi';
+
+getTheForm.submit();
+
+}
+
+function ptzLeftSubmit()
+
+{
+
+var getTheForm = document.getElementById('sendptz');
+
+getTheForm.action= 'http://'+IPandPort+'/cgi-bin/hi3510/ytleft.cgi';
+
+getTheForm.submit();
+
+}
+
+function ptzRightSubmit()
+
+{
+
+var getTheForm = document.getElementById('sendptz');
+
+getTheForm.action= 'http://'+IPandPort+'/cgi-bin/hi3510/ytright.cgi';
+
+getTheForm.submit();
+
+}
+
+function reload_count()
+
+{
+
+var reCalc = 0;
+
+if (MyFPS > (DisplayStatsEvery * 1000) && (MyFPS > 1000))
+
+reCalc = Math.round(MyFPS/1000);
+
+else
+
+reCalc = DisplayStatsEvery;
+
+if ((isIE) && (countFPS > 0) && (totalKBps > 0))
+
+{
+
+if ((typeof devid !== "undefined") && (DisplayCameraName != ""))
+
+$("#CameraName").text(devid + " - FPS: " + (countFPS / reCalc).toFixed(2) + " - Bps: " + Math.round((totalKBps/reCalc)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+
+else
+
+$("#CameraName").text("FPS: " + (countFPS / reCalc).toFixed(2) + " - Bps: " + Math.round((totalKBps/reCalc)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+
+}
+
+else if (countFPS > 0)
+
+if ((typeof devid !== "undefined") && (DisplayCameraName != ""))
+
+$("#CameraName").text(devid + " - FPS: " + (countFPS / reCalc).toFixed(2));
+
+else
+
+$("#CameraName").text("FPS: " + (countFPS / reCalc).toFixed(2));
+
+if (countFPS > 0)
+
+{
+
+countFPS = 0;
+
+totalKBps = 0;
+
+startTime = new Date();
+
+endTime = new Date();
+
+}
+
+}
