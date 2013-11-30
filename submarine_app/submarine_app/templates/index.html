@@ -13,7 +13,7 @@
   <!-- Default panel contents -->
   <div class="panel-heading">Navigation Panel</div>
   <div class="panel-body">
-    <p>Arrow Keys direct the sub, alarms will pop up in the bottom color coded</p>
+    Arrow Keys direct the sub, alarms will pop up in the bottom color coded
   </div>
  <div  class="well">
  <div class="row">
@@ -25,48 +25,57 @@
   <div class="col-md-6"></div>
   <div class="col-md-3"></div>
   <div class="col-md-3">
-  <button type="button" class="btn btn-default btn-lg">
-  <span class="glyphicon glyphicon-arrow-up"></span> up
-  </button>
+  <span class="glyphicon glyphicon-arrow-up"></span>
+  <input type="button" value="up" id="MOTORup" class="btn btn-default btn-lg" name="MOTORup"></input>
   </div>
-
 
   <!--left/right arrow-->
   <div class="col-md-6"></div>
   <div class="col-md-2"></div>
-  <div class="col-md-1">
-  <button type="button" class="btn btn-default btn-lg">
+  <div class="col-sm-1">
   <span class="glyphicon glyphicon-arrow-left"></span> left
-  </button>
+  <input type="button" value="left" id="MOTORleft" class="btn btn-default btn-lg" name="MOTORleft"></input>
   </div>
-  <div class="col-md-1"></div>
-  <div class="col-md-1">
-  <button type="button" class="btn btn-default btn-lg">
+  <div class="col-sm-1"></div>
+  <div class="col-sm-1">
   <span class="glyphicon glyphicon-arrow-right"></span> right
-  </button>
+  <input type="button" value="right" id="MOTORright" class="btn btn-default btn-lg" name="MOTORright"></input>
   </div>
 
   <!--down arrow-->
   <div class="col-md-6"></div>
   <div class="col-md-3"></div>
-  <div class="col-md-3">
-  <button type="button" class="btn btn-default btn-lg">
-  <span class="glyphicon glyphicon-arrow-down"></span> down
-  </button>
+  <div class="col-md-1">
+  <span class="glyphicon glyphicon-arrow-down"></span>
+  <input type="button" value="down" id="MOTORdown" class="btn btn-default btn-lg" name="MOTORup"></input>
   </div>
+
+  <!--direction-->
+  <div class="col-md-3"></div>
+  <div class="col-md-6"></div>
+  <div class="col-md-2"></div>
+  <div align="center" class="col-md-3">
+  <h3>Direction</h3>
+  <div class="btn-group btn-group-lg">
+  <input type="button" value="forward" id="MOTORforward" class="btn btn-default"></input>
+  <input type="button" value="reverse" id="MOTORreverse" class="btn btn-default"></input>
+  </div>
+  </div>
+
 
   <!--speeds -->
   <div class="col-md-3"></div>
   <div class="col-md-6"></div>
   <div class="col-md-2"></div>
   <div align="center" class="col-md-3">
-  <h3><br>Speed</h3>
+  <h3>Speed</h3>
   <div class="btn-group btn-group-lg">
-  <button type="button" class="btn btn-default">-</button>
-  <button type="button" class="btn btn-default">1</button>
-  <button type="button" class="btn btn-default">2</button>
-  <button type="button" class="btn btn-default">3</button>
-  <button type="button" class="btn btn-default">+</button>
+  <input type="button" value="-" id="MOTORspeedminus" class="btn btn-default"></input>
+  <input type="button" value="1" id="MOTORspeed1" class="btn btn-default"></input>
+  <input type="button" value="2" id="MOTORspeed2" class="btn btn-default"></input>
+  <input type="button" value="3" id="MOTORspeed3" class="btn btn-default"></input>
+  <input type="button" value="+" id="MOTORspeedplus" class="btn btn-default"></input>
+  </div>
   </div>
   </div>
 
