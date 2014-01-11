@@ -1,9 +1,9 @@
 from submarine_app import app
 from flask import render_template, redirect, request, current_app, session, flash, url_for
-from Adafruit_PWM_Servo_Driver import PWM
 import time
 import sys
 import re
+from Adafruit_PWM_Servo_Driver import PWM
 
 import argparse
 parser = argparse.ArgumentParser()
@@ -51,6 +51,9 @@ def index(function=None):
 def up():
     error = []
     print "up was processed."
+    pwm.setPWM(vertical_pin, 0, servoMax)
+    time.sleep(1)
+    pwm.setPWM(vertical_pin, 0, servoMin)
     return render_template('index.html', error=error)
 
 @app.route('/down')
@@ -63,10 +66,33 @@ def down():
 def left():
     error = []
     print "left was processed"
+    pwm.setPWM(left_pin, 0, servoMax)
+    time.sleep(1)
+    pwm.setPWM(left_pin, 0, servoMin)
     return render_template('index.html', error=error)
 
 @app.route('/right')
 def right():
     error = []
     print "right was processed"
+    pwm.setPWM(right_pin, 0, servoMax)
+    time.sleep(1)
+    pwm.setPWM(right_pin, 0, servoMin)
     return render_template('index.html', error=error)
+
+@app.route('/stop')
+def stop():
+    error = []
+    print "stop was processed"
+    pwm.setPWM(right_pin, 0, servoMin)
+    pwm.setPWM(left_pin, 0, servoMin)
+    return render_template('index.html', error=error)
+
+@app.route('/forward')
+def forward():
+    error = []
+    print "forward was processed"
+    pwm.setPWM(right_pin, 0, servoMax)
+    pwm.setPWM(left_pin, 0, servoMax)
+    return render_template('index.html', error=error)
+

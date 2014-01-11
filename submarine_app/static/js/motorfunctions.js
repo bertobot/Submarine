@@ -18,8 +18,14 @@ $.get(document.URL + "right");
 });
 
 
+$("#MOTORforward").mousehold(300,function(i){
+$.get(document.URL + "forward");
+});
 
 
+$("#MOTORstop").mousehold(300,function(i){
+$.get(document.URL + "stop");
+});
 
 
 });
