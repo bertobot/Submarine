@@ -16,7 +16,7 @@
     {%- endblock styles %}
     {%- endblock head %}
   </head>
-  <body{% block body_attribs %}{% endblock body_attribs %}>
+  <body{% block body_attribs %}onload="createImageLayer();"{% endblock body_attribs %}>
     {% block body -%}
     {% block navbar %}
     {%- endblock navbar %}
@@ -28,6 +28,7 @@
     <script src="static/js/bootstrap.js"></script>
     <script src="static/js/mousehold.js"></script>
     <script src="static/js/motorfunctions.js"></script>
+    <script src="static/js/stream.js"></script>
     {%- endblock scripts %}
     {%- endblock body %}
 
