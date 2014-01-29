@@ -14,7 +14,7 @@ class SubmarineMovement:
 	def __init__(self):
 		self.pwm = PWM(0x40, debug=True)
 		self.servoMin = 400
-		self.servoMax = 440
+		self.servoMax = 600
 		self.servoReverse = 440
 		self.vertical_pin = 0
 		self.left_pin = 1
