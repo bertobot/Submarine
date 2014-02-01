@@ -6,7 +6,7 @@ class UDPServer:
 		self.port = port
 		self.callback = callback
 		self.address = "0.0.0.0"
-		self.sock = socket(AF_INET, SOCK_DGRAM)
+		self.sock = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP)
 		self.sock.bind((self.address, self.port))
 
 	def onMessageReceived(self, callback):
